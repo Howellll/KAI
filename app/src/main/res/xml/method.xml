@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Без подтипов: язык переключается внутри клавиатуры (🌐). Так система не рисует
+     в панели навигации свою кнопку смены клавиатуры под нашим Enter. -->
+<input-method xmlns:android="http://schemas.android.com/apk/res/android"
+    android:settingsActivity="com.kai.keyboard.SettingsActivity"
+    android:supportsSwitchingToNextInputMethod="true" />

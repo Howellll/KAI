@@ -1,0 +1,44 @@
+KAI — Keyboard with AI support
+A fork of Klava (https://github.com/doroshenkosa/klava), Copyright 2026 The Klava Authors.
+Modifications Copyright 2026 Howellll.
+
+This program is free software: you can redistribute it and/or modify it under the terms of
+the GNU General Public License as published by the Free Software Foundation, either version 3
+of the License, or (at your option) any later version (see LICENSE). It is distributed in the
+hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+The Gradle wrapper (gradlew, gradlew.bat, gradle/wrapper) is part of Gradle and is licensed
+under the Apache License, Version 2.0.
+
+OkHttp (https://square.github.io/okhttp/, com.squareup.okhttp3:okhttp), Copyright Square, Inc.,
+and its dependencies Okio and the Kotlin standard library are used for the optional AI requests
+and are licensed under the Apache License, Version 2.0.
+
+app/src/main/java/com/kai/keyboard/SwipeAlign.kt adapts the gesture point model (skip and key
+probabilities, ProximityInfoStateUtils / ProximityInfoParams) of the Android Open Source Project's
+LatinIME, Copyright (C) The Android Open Source Project, licensed under the Apache License,
+Version 2.0.
+
+The dictionary and statistics files in app/src/main/assets and the test phrases in
+app/src/test/resources are data, not code, and are distributed under their own licenses —
+see DATA_LICENSES.md:
+
+- ru.dict, en.dict — word frequencies from FrequencyWords by Hermit Dave
+  (https://github.com/hermitdave/FrequencyWords, CC BY-SA 4.0); for Russian mixed with counts from
+  the social-media part of the Taiga corpus (T. Shavrina, O. Shapovalova (2017), To the methodology of corpus
+  construction for machine learning: «Taiga» syntax tree corpus and parser, CORPORA 2017; CC BY-SA) and from
+  the Leipzig Corpora Collection (D. Goldhahn, T. Eckart, U. Quasthoff (2012), Building Large Monolingual
+  Dictionaries at the Leipzig Corpora Collection, LREC 2012; https://wortschatz.uni-leipzig.de, CC BY);
+  and Russian word forms from
+  the OpenCorpora dictionary (https://opencorpora.org, CC BY-SA 3.0), generated with pymorphy3.
+  The resulting files are licensed under CC BY-SA 4.0.
+- ru.bi, en.bi — word-pair counts from sentences of Tatoeba (https://tatoeba.org, CC BY 2.0 FR)
+  and from subtitles of OpenSubtitles (http://www.opensubtitles.org) via the OPUS corpus collection
+  (ru.bi also from the Taiga and Leipzig corpora above, so it is licensed under CC BY-SA 4.0);
+  P. Lison and J. Tiedemann (2016), OpenSubtitles2016: Extracting Large Parallel Corpora from Movie and TV Subtitles, LREC 2016.
+- emoji.txt — the emoji list (emoji-test.txt) and emoji names and keywords from the Unicode Common
+  Locale Data Repository (CLDR), Copyright © 1991-2026 Unicode, Inc., under the Unicode License v3
+  (app/src/main/assets/UNICODE-LICENSE.txt); Russian word forms in it come from the OpenCorpora
+  dictionary via pymorphy3 (CC BY-SA 4.0).
+- sim_ru.tsv — sentences of Tatoeba (https://tatoeba.org), CC BY 2.0 FR.

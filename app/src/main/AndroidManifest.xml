@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Отпечаток для сейфа: системное окно отпечатка, сам отпечаток приложению недоступен. -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <!-- Интернет нужен только функциям ИИ (по умолчанию выключены). Единственная точка выхода в сеть —
+         data/ai/OpenAiCompatibleClient.kt; запросы уходят только на адрес из настроек и только по нажатию пользователя. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Состояние сети не читаем: «нет сети» определяем по ошибке запроса. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
+
+    <application
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Сейф: записи, ПИНы, отпечаток. -->
+        <activity
+            android:name=".SafeActivity"
+            android:exported="false"
+            android:label="@string/sf_title"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Короткое окно отпечатка поверх приложения, когда сейф открывают из клавиатуры. -->
+        <activity
+            android:name=".SafeUnlockActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- Картинки из истории буфера — только тому приложению, куда их вставили (разрешение на ссылку). -->
+        <provider
+            android:name=".ClipImageProvider"
+            android:authorities="com.kai.keyboard.clips"
+            android:exported="false"
+            android:grantUriPermissions="true" />
+
+        <service
+            android:name=".KlavaIME"
+            android:exported="true"
+            android:label="@string/ime_name"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method" />
+        </service>
+    </application>
+</manifest>

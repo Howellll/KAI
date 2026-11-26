@@ -1,0 +1,34 @@
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+.kotlin/
+.DS_Store
+.claude/
+
+# Исходные частотные списки — скрипты в tools/ скачивают их сами
+tools/*.txt
+tools/*.part
+*.tsv.bz2
+rus_sentences.tsv
+eng_sentences.tsv
+*_sub.txt
+venv/
+
+# Локальные файлы, не относящиеся к проекту
+go.mod
+Klava-src.zip
+
+# Ключи подписи — никогда в репозиторий
+*.jks
+*.keystore
+
+# Данные эмодзи Unicode/CLDR — build_emoji.py скачивает их сам
+tools/emoji/
+
+
+# Отложенная переписка для проверки (соцсети Taiga) — только локально, tools/build_corpora.py
+app/src/test/resources/sim_ru_chat.tsv
+tools/ru_mix.txt
+tools/ru_spread.txt
